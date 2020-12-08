@@ -2,33 +2,40 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse
 from .forms import ContactForm
-from .models import Contact, Info
+from .models import Contact, Info, Script, Category
 from . import views
 
 def index (request) :
-    info = get_object_or_404(Info, pk = 1)
+    info =Info.objects.latest('id')
+    category = get_list_or_404(Category.objects.order_by('number'))
     context = {
-        'info' : info 
+        'info' : info,
+        'categoryList' : category
     }
     return render(request, "index.html", context)
 
-def scripts (request) :
-    info = get_object_or_404(Info, pk = 1)
+def category (request, category_id) :
+    info =Info.objects.latest('id')
+    script =get_list_or_404(Script.objects.order_by('date'), pk=category_id)
     context = {
-        'info' : info 
+        'info' : info ,
+        'scriptList' : script
     }
-    return render(request, "scripts.html", context)
+    return render(request, "category.html", context)
 
-def start_to (request) :
-    info = get_object_or_404(Info, pk = 1)
+def script (request, script_id):
+    info =Info.objects.latest('id')
+    script =get_object_or_404(Script, pk=script_id)
     context = {
-        'info' : info 
+        'info' : info ,
+        'script' : script
     }
-    return render(request, "start_to.html", context)
+    
+    return render(request, "script.html", context)
 
 def contact (request) :
     form = ContactForm()
-    info = get_object_or_404(Info, pk = 1)
+    info = Info.objects.latest('id')
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
