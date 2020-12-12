@@ -6,8 +6,15 @@ from .models import Contact, Info, Script, Category
 from . import views
 
 def index (request) :
-    info =Info.objects.latest('id')
-    category = get_list_or_404(Category.objects.order_by('number'))
+    info = Info.objects.latest('id')
+    category = get_list_or_404(Category)
+    for i in category:
+        for ii in category:
+            if (i.number_of_scripts < ii.number_of_scripts):
+                temp = i
+                i = ii
+                ii = temp
+
     context = {
         'info' : info,
         'categoryList' : category
@@ -15,20 +22,21 @@ def index (request) :
     return render(request, "index.html", context)
 
 def category (request, category_id) :
-    info =Info.objects.latest('id')
-    script =get_list_or_404(Script.objects.order_by('date'), pk=category_id)
+    info = Info.objects.latest('id')
+    script = Script.objects.filter(category=get_object_or_404(Category, pk=category_id)).order_by('date')
+   
     context = {
         'info' : info ,
         'scriptList' : script
     }
-    return render(request, "category.html", context)
+    return render(request, "categories.html", context)
 
 def script (request, script_id):
-    info =Info.objects.latest('id')
-    script =get_object_or_404(Script, pk=script_id)
+    info = Info.objects.latest('id')
+    script = get_object_or_404(Script, pk=script_id)
     context = {
         'info' : info ,
-        'script' : script
+        'script' : script  
     }
     
     return render(request, "script.html", context)

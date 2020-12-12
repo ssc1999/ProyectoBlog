@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block titile %}Usefull scripts{% endblock %}
+{% block content %}
+    <div id="content">
+      {% if scriptList %}
+        {% for s in scriptList %}
+          <h1><a href="{% url 'script' s.id %}">{{ s.title }}</a></h1>
+          <h2>{{ s.username }} of posts</h2>
+          <h3>{{ s.date }}</h3>
+        {% endfor %}
+      {% else %}
+        <h1>Hola</h1>
+      {% endif %}
+    </div>
+{% endblock %}
+    

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+  {% block titile %}Usefull scripts{% endblock %}
+  {% block content%}
+      <div id="content">
+        {% if script %}
+              
+              <h2>{{ script.username }}</h2>
+              <h3>{{ script.date }}</h3>
+        {% endif %}
+      </div>
+  {% endblock %}
+    

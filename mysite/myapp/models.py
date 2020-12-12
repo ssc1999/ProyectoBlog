@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 from datetime import datetime
 
 class Contact(models.Model):
@@ -20,14 +21,19 @@ class Info(models.Model):
 
 class Category(models.Model):
     name = models.CharField(default="Null", max_length=100)
-    number = models.IntegerField()
     description = models.TextField(max_length=400)
-
+    
     def __str__(self):
         return self.name
-        
+
+    @property
+    def number_of_scripts(self):
+        size = Script.objects.filter(category=Category.objects.get(name=self.name)).count()
+        return size
+
+
 class Script(models.Model):
-    Category = models.ForeignKey(Category, on_delete=models.CASCADE, null=False)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=50)
     username = models.CharField(max_length=20)
     date = models.DateTimeField(default=datetime.now)
