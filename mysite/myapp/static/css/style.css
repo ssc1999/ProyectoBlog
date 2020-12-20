@@ -213,13 +213,17 @@ ul#menu li a:hover
 { font-size: 100%;
   width: 400px;
   font-family: "lucida sans", arial, sans-serif;
-  padding-left: 50px;
+  padding-left: 40px;
   padding-top: 0px;
   color: #5D5D5D;
 }
 
+#links_content h4
+{ padding-left: 20px;}
+
 #links_content a
 { border-bottom: none;
+  padding-left: 20px;
   color: rgb(0, 0, 0);}
 
 #links_content a:hover
@@ -261,6 +265,10 @@ ul#menu li a:hover
   margin: 0 0 0 0; 
   padding: 0 0 4px 25px;
   line-height: 1.5em;}
+
+#content image
+{ width: 20px;
+  height:80px;}
 
 #footer
 { width: 916px;

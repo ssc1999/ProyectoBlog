@@ -5,12 +5,10 @@
   {% block content%}
       <div id="content">
         {% if script %}
-
-              <h2>{{ script.username }}</h2>
-              <h3>{{ script.date }}</h3>
-              <h4>{{ script.image.name }}</h4>
-              <img alt="{{ script.image.name }}" class="post-avatar" src="{{ script.image.name }}" />
-
+              <h1>{{ script.title }}</h1>
+              <h3>Written by: {{ script.username }}</h3></br>{{ script.date }}</h3>
+              <p><ul>{{ script.text }}</ul></p>
+              <img alt="{{ script.image.name }}" class="image" src="/{{ script.image.name }}" />
         {% endif %}
       </div>
   {% endblock %}

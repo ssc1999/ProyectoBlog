@@ -11,7 +11,7 @@
           {% if categoryList %}
             {% for c in categoryList%}
               <h1><a href="{% url 'category' c.id%}">{{ c.name }}</a></h1>
-              <h2>{{ c.number_of_scripts }} posts</h2>
+              <h4>{{ c.number_of_scripts }} posts</h4>
               <h3>{{ c.description }}</h3>
             {% endfor %}
           {% else %}
