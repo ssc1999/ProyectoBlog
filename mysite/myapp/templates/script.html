@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
-  {% block titile %}Usefull scripts{% endblock %}
+  {% block title %}Usefull scripts{% endblock %}
   {% block content%}
       <div id="content">
         {% if script %}
-              
+
               <h2>{{ script.username }}</h2>
               <h3>{{ script.date }}</h3>
+              <h4>{{ script.image.name }}</h4>
+              <img alt="{{ script.image.name }}" class="post-avatar" src="{{ script.image.name }}" />
+
         {% endif %}
       </div>
   {% endblock %}
-    

@@ -22,7 +22,7 @@ class Info(models.Model):
 class Category(models.Model):
     name = models.CharField(default="Null", max_length=100)
     description = models.TextField(max_length=400)
-    
+
     def __str__(self):
         return self.name
 
@@ -38,7 +38,7 @@ class Script(models.Model):
     username = models.CharField(max_length=20)
     date = models.DateTimeField(default=datetime.now)
     text = models.TextField(max_length=2000)
-    image = models.ImageField(upload_to='img', verbose_name='Image', null = True, blank=True)
+    image = models.ImageField(upload_to='myapp/static/img/script', verbose_name='Image', null = True, blank=True)
 
     def __str__(self):
         return self.title
