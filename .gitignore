@@ -1,4 +1,5 @@
 # py cache
-mysite/myapp/migrations/__pycache__
-mysite/mysite/__pycache__
-mysite/myapp/__pycache__
+mysite/myapp/migrations/__pycache__/*
+mysite/mysite/__pycache__/*
+mysite/myapp/__pycache__/*
+
