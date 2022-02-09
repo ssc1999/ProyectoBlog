@@ -2,6 +2,7 @@ from django.db import models
 from django.forms import ModelForm
 from datetime import datetime
 
+
 class Contact(models.Model):
     name = models.CharField(max_length=20)
     mail = models.CharField(max_length=100)
